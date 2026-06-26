@@ -314,18 +314,33 @@ section.block{max-width:var(--maxw);margin:0 auto;padding:90px clamp(18px,5vw,40
 
 /* ---------- CONTACT / FOOTER (conservatory bottom scene) ---------- */
 footer{position:relative;overflow:hidden;text-align:center;
-  min-height:100vh;display:grid;place-items:center;padding:100px 20px 70px}
+  min-height:100vh;display:flex;flex-direction:column;padding:90px 20px 36px}
 .footer-bg{background-image:url("assets/images/conservatory.webp");background-color:#14130c}
 .footer-overlay{background:
-  linear-gradient(180deg, rgba(42,35,66,.94) 0%, rgba(12,12,10,.3) 28%, rgba(12,12,10,.5) 72%, rgba(12,12,10,.72) 100%)}
-.footer-inner{position:relative;z-index:2;max-width:640px;width:100%}
-.gotop{margin-top:30px}
-.social-row{display:flex;gap:18px;justify-content:center;margin:24px 0 28px;flex-wrap:wrap}
+  linear-gradient(180deg, rgba(42,35,66,.9) 0%, rgba(12,12,10,.18) 26%, rgba(12,12,10,.32) 64%, rgba(12,12,10,.7) 100%)}
+/* booking block centered in the screen; everything else pinned to the bottom rows */
+.footer-center{flex:1;display:grid;place-items:center;align-content:center;
+  position:relative;z-index:2;max-width:680px;width:100%;margin:0 auto}
+.footer-mail{display:inline-block;margin-top:18px;font-family:var(--serif);color:var(--teal);
+  font-weight:700;font-size:clamp(1.7rem,4.5vw,3rem);line-height:1.1;word-break:break-word}
+.footer-mail:hover{color:var(--accent)}
+.press-line{background:var(--accent-2);color:#1c1336;padding:3px 10px;border-radius:2px;
+  font-weight:600;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.footer-bottom{position:relative;z-index:2}
+.footer-credits{display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:0 clamp(8px,4vw,56px)}
+.footer-credits .copy{margin:0;text-align:left}
+.gotop{margin:0;flex:none}
+@media(max-width:600px){
+  .footer-credits{flex-direction:column-reverse;gap:14px;padding:0}
+}
+.social-row{display:flex;gap:14px;justify-content:center;margin:0 0 22px;flex-wrap:wrap}
 .social-row a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
-  background:var(--panel-2);transition:.22s}
-.social-row a:hover{background:var(--accent);transform:translateY(-4px) rotate(-6deg)}
-.social-row a svg{width:20px;height:20px;fill:var(--ink)}
-footer .copy{font-family:var(--sans);font-size:.78rem;color:var(--text-dim);letter-spacing:.04em}
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.32);transition:.22s}
+.social-row a:hover{background:#fff;transform:translateY(-4px)}
+.social-row a svg{width:19px;height:19px;fill:#fff;transition:fill .22s}
+.social-row a:hover svg{fill:#000}
+footer .copy{font-family:var(--sans);font-size:.78rem;color:var(--text-dim);letter-spacing:.04em;margin-top:18px}
 footer .mail{color:var(--teal)}
 
 /* ---------- MODAL ---------- */
@@ -443,13 +458,17 @@ footer .mail{color:var(--teal)}
 <footer id="contact">
   <div class="scene-bg footer-bg" data-parallax="0.18"></div>
   <div class="scene-overlay footer-overlay"></div>
-  <div class="footer-inner">
+  <div class="footer-center">
     <h2 class="h2" style="color:var(--teal)">Booking &amp; collaboration</h2>
-    <p class="lead" style="margin:10px auto 0;text-align:center">For shows, features and press:
-      <a class="mail" href="mailto:hello@gokbulut.example">hello@gokbulut.example</a></p>
+    <p class="lead press-line" style="margin:10px auto 0">For collaborations, performances, features and press:</p>
+    <a class="footer-mail" href="mailto:hello@gokbulut.media">hello@gokbulut.media</a>
+  </div>
+  <div class="footer-bottom">
     <div class="social-row" id="socialRow"></div>
-    <a href="#top" class="btn btn-white gotop">↑ go top</a>
-    <p class="copy">© <span id="yr"></span> Gökbulut · Frankenştayn Şarkılar — built with care.</p>
+    <div class="footer-credits">
+      <p class="copy">Based in Istanbul · © <span id="yr"></span> Gökbulut · All rights reserved.</p>
+      <a href="#top" class="btn btn-white gotop">↑ go top</a>
+    </div>
   </div>
 </footer>
 
